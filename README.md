@@ -6,7 +6,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/InformaticFreak/ascii-graph-plotter)](https://github.com/InformaticFreak/ascii-graph-plotter/releases/tag/2021.1)&nbsp;
 [![CodeFactor](https://www.codefactor.io/repository/github/informaticfreak/ascii-graph-plotter/badge/main)](https://www.codefactor.io/repository/github/informaticfreak/ascii-graph-plotter/overview/main)&nbsp;
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=informaticfreak/ascii-graph-plotter)&nbsp;
-[![Example: My use case](https://img.shields.io/badge/example-my%20use%20case-006ab3)](http://tubaf.informatic-freak.de/hoehere-mathematik-fuer-ingenieure-1.php#epsilon-delta-kriterium-der-stetigkeit)&nbsp;
+[![Example: My use case](https://img.shields.io/badge/example-my%20use%20case-green)](http://tubaf.informatic-freak.de/hoehere-mathematik-fuer-ingenieure-1.php#epsilon-delta-kriterium-der-stetigkeit)&nbsp;
 
 Plots the graph of a function with ASCII characters.
 

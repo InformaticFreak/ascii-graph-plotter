@@ -24,7 +24,7 @@ py main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int
 |---|---|---|---|
 | *function* | `str` | | Defines the function |
 | *scale* | `float,float` | `0.1,10` | Scales the graph in x,y direction |
-| *origin* | `int,int` | `40,20` calculated by `(scale-1)/2` | Sets the origin of the plot to the list index x,y |
+| *origin* | `int,int` | `40,20` calculated by `(size-1)/2` | Sets the origin of the plot to the list index x,y |
 | *size* | `int,int` | `81,41` | Sets the size x,y in characters of the plot |
 | *discontinuous* | `bool` | `false` | Specifies if the graph should be plotted discontinuously |
 | *precision* | `bool` | `false` | Specifies if the graph should be plottet with thinner characters oriented at the angle at the point |
@@ -37,7 +37,7 @@ py main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int
 - `degrees`, `radian`
 - `log`, `sign`, `sqrt`
 
-### Constants
+### Built-In Constants
 
 - `e`, `pi`
 
@@ -46,7 +46,7 @@ py main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int
 - Specifie the scale in x direction as 0.2 and use the default scale in y direction of 10, so write `0.2,_`
 - Set the x origin to the list index 5 and use the default y origin of list index 20, so write `5,_`
 - Use the default x size of the plot of 81 and specifie the y size of the plot as 31, so write `_,31`
-- Use the default for all other parameter, so do not write anything or use `_,_` for every single parameter
+- Use the default for all other parameter, so don't write anything or use `_` and `_,_` as placeholder
 
 ```
 py main.py sin(x) 0.2,_ 5,_ _,31
@@ -97,7 +97,7 @@ f(x)=sin(x) 0.2,10.0 5,14 81,31 0 0 0
 py main.py f(x)=sin(x) 0.2,10 5,14 81,31 _ 1
 ```
 
-The plotted graph of the function now has thinner lines and a suitable character, depending on the slope of the the respective point.
+The plotted graph of the function now has thinner lines and a suitable character, depending on the slope of the respective point.
 
 ```
 f(x)=sin(x) 0.2,10.0 5,14 81,31 0 1 0

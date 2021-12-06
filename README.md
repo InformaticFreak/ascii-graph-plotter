@@ -3,7 +3,7 @@
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-green)](LICENSE.txt)&nbsp;
 [![Python Version](https://img.shields.io/badge/python-3-blue)](https://www.python.org/downloads/)&nbsp;
-[![GitHub release](https://img.shields.io/github/v/release/informaticfreak/ascii-graph-plotter)](https://github.com/InformaticFreak/ascii-graph-plotter/releases/tag/2021.1)&nbsp;
+[![GitHub release](https://img.shields.io/github/v/release/InformaticFreak/ascii-graph-plotter)](https://github.com/InformaticFreak/ascii-graph-plotter/releases/tag/2021.1)&nbsp;
 [![CodeFactor](https://www.codefactor.io/repository/github/informaticfreak/ascii-graph-plotter/badge/main)](https://www.codefactor.io/repository/github/informaticfreak/ascii-graph-plotter/overview/main)&nbsp;
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=informaticfreak/ascii-graph-plotter)&nbsp;
 

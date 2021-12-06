@@ -34,7 +34,7 @@ def line(xy0, xy1):
 	return lp
 
 # Anstieg am Punkt xy berechnen & passendes Zeichen zuordnen: █▓▒░
-def draw(xy0, xy1, high_precision=True, ascii=False):
+def draw(xy0, xy1, high_precision=True, ascii_only=False):
 	if xy0 == (-1, -1) or xy1 == (-1, -1): return " "
 	
 	x0, y0 = xy0
@@ -50,13 +50,13 @@ def draw(xy0, xy1, high_precision=True, ascii=False):
 		elif 60 <= m <= 90: char = "|"
 	
 	else:
-		char = "#" if ascii else "█"
+		char = "#" if ascii_only else "█"
 	
 	return char
 
 #-----------------------------------------------------------------------------------------#
 
-# main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int] [discontinuous: bool] [precision: bool] [ascii: bool]
+# main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int] [discontinuous: bool] [precision: bool] [ascii_only: bool]
 
 # Feldgröße definieren, Nullpunkt position setzen & Präzission festlegen
 schemes = [r"\d+,\d+", r"_,\d+", r"_,_", r"\d+,_", r"(((\d+)?\.\d+)|(\d+\.?)),(((\d+)?\.\d+)|(\d+\.?))", r"_,(((\d+)?\.\d+)|(\d+\.?))", r"_,_", r"(((\d+)?\.\d+)|(\d+\.?)),_", r"1|(T|t)rue", r"_|0|(F|f)alse"]
@@ -108,12 +108,12 @@ try:
 except: precise = precise_default
 
 # ASCII Darstellung
-ascii_default = False
-ascii = ascii_default
+ascii_only_default = False
+ascii_only = ascii_only_default
 try:
-	if re.search(schemes[8], sys.argv[7]): ascii = True
-	elif re.search(schemes[9], sys.argv[7]): ascii = ascii_default
-except: ascii = ascii_default
+	if re.search(schemes[8], sys.argv[7]): ascii_only = True
+	elif re.search(schemes[9], sys.argv[7]): ascii_only = ascii_only_default
+except: ascii_only = ascii_only_default
 
 #-----------------------------------------------------------------------------------------#
 
@@ -121,7 +121,7 @@ except: ascii = ascii_default
 grid = [ [ None for x in range(size[0]) ] for y in range(size[1]) ]
 
 # Achsen in Feld markieren
-chars = "-|++A>+" if ascii else "─│┬┤▲▸┼"
+chars = "-|++A>+" if ascii_only else "─│┬┤▲▸┼"
 for y in range(size[1]):
 	grid[y][origin[0]] = chars[3] if y % 5 == 0 else chars[1]
 grid[0][origin[0]] = chars[4]
@@ -132,8 +132,9 @@ grid[origin[1]][size[0]-1] = chars[5]
 
 grid[origin[1]][origin[0]] = chars[6]	
 
-# Alle Funktionen definieren
-f = eval(f"lambda x: {sys.argv[1][5:] if sys.argv[1].startswith('f(x)=') else sys.argv[1]}")
+# Funktion definieren
+try: f = eval(f"lambda x: {sys.argv[1][5:] if sys.argv[1].startswith('f(x)=') else sys.argv[1]}")
+except IndexError: raise Exception("No function given")
 
 # Funktionswerte ausrechnen und Position durch Nullpunkt Verschiebung ermitteln
 xy = []
@@ -148,10 +149,10 @@ if not discontinuous:
 	for i, c in enumerate(xy[:-1]): xy.extend(line(c, xy[i+1]))
 
 # Funktion mit Anstieg in Feld markieren
-for i, c in enumerate(xy[:-1]): grid[c[1]][c[0]] = draw(c, xy[i+1], precise, ascii)
+for i, c in enumerate(xy[:-1]): grid[c[1]][c[0]] = draw(c, xy[i+1], precise, ascii_only)
 
 # Feld in string konvertieren
-output = [f"\nf(x)={sys.argv[1]} {scale[0]},{scale[1]} {origin[0]},{origin[1]} {size[0]},{size[1]} {'1' if discontinuous else '0'} {'1' if precise else '0'} {'1' if ascii else '0'}\n\n"]
+output = [f"\nf(x)={sys.argv[1]} {scale[0]},{scale[1]} {origin[0]},{origin[1]} {size[0]},{size[1]} {'1' if discontinuous else '0'} {'1' if precise else '0'} {'1' if ascii_only else '0'}\n\n"]
 for y in grid:
 	for x in y:
 		if x == None: output.append(" ")

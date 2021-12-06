@@ -21,9 +21,9 @@ py main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int
 
 | Parameter | Type | Default value | Description |
 |---|---|---|---|
-| *function* | `str` | `NOT OPTIONAL` | Defines the function |
+| *function* | `str` | | Defines the function |
 | *scale* | `float,float` | `0.1,10` | Scales the graph in x,y direction |
-| *origin* | `int,int` | `40,20` calculated by `(scaleX-1)/2,(scaleY-1)/2` | Sets the origin of the plot to the list index x,y |
+| *origin* | `int,int` | `40,20` calculated by `(scale-1)/2` | Sets the origin of the plot to the list index x,y |
 | *size* | `int,int` | `81,41` | Sets the size x,y in characters of the plot |
 | *discontinuous* | `bool` | `false` | Specifies if the graph should be plotted discontinuously |
 | *precision* | `bool` | `false` | Specifies if the graph should be plottet with thinner characters oriented at the angle at the point |

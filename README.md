@@ -77,3 +77,48 @@ f(x)=sin(x) 0.2,10.0 5,14 81,31 0 0 0
      │                                                                           
      ┤                                                                           
 ```
+
+- Set the discontinuous Parameter to default, so write `_`
+- Now specifie the precision Parameter to true, so write `1`, `true` or `True`
+
+```
+py main.py f(x)=sin(x) 0.2,10 5,14 81,31 _ 1
+```
+
+The plotted graph of the function now has thinner lines and a suitable character, depending on the slope of the the respective point.
+
+```
+f(x)=sin(x) 0.2,10.0 5,14 81,31 0 1 0
+
+     ▲                                                                           
+     │                                                                           
+     │                                                                           
+     │                                                                           
+     │      --\                            --\                             --\   
+     ┤     /   \                          /   -\                         -/   \  
+     │    /     \                        /      |                       /      \ 
+     │   /       \                      /       \                       |       -
+     │  /         |                     |        \                     /         
+     │  |         |                    /          |                   /          
+     ┤ /          \                   /           |                   |          
+     │/            \                  |           \                   |          
+     │|             |                 |            \                 /           
+     │|             |                /              |               /            
+┬────/────┬────┬────\────┬────┬────┬/───┬────┬────┬─|──┬────┬────┬──|─┬────┬────▸
+    /┤               \              |               \               |            
+    |│                |             |                \             /             
+    |│                \            /                  |           /              
+   / │                 \          /                   \           |              
+  /  │                  |         |                    \         /               
+  |  ┤                  |        /                      |       /                
+ /   │                  \       /                       \       |                
+/    │                   \      |                        \     /                 
+     │                    \    /                          \   /                  
+     │                     ---/                            --/                   
+     ┤                                                                           
+     │                                                                           
+     │                                                                           
+     │                                                                           
+     │                                                                           
+     ┤                                                                           
+```

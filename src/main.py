@@ -152,7 +152,7 @@ if not discontinuous:
 for i, c in enumerate(xy[:-1]): grid[c[1]][c[0]] = draw(c, xy[i+1], precise, ascii_only)
 
 # Feld in string konvertieren
-output = [f"\nf(x)={sys.argv[1]} {scale[0]},{scale[1]} {origin[0]},{origin[1]} {size[0]},{size[1]} {'1' if discontinuous else '0'} {'1' if precise else '0'} {'1' if ascii_only else '0'}\n\n"]
+output = [f"\nf(x)={sys.argv[1][5:] if sys.argv[1].startswith('f(x)=') else sys.argv[1]} {scale[0]},{scale[1]} {origin[0]},{origin[1]} {size[0]},{size[1]} {'1' if discontinuous else '0'} {'1' if precise else '0'} {'1' if ascii_only else '0'}\n\n"]
 for y in grid:
 	for x in y:
 		if x == None: output.append(" ")

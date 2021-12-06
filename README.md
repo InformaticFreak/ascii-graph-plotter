@@ -20,7 +20,7 @@ py main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int
 ```
 
 | Parameter | Type | Default value | Description |
-|---|---|---|
+|---|---|---|---|
 | *function* | `str` | `NOT OPTIONAL` | Defines the function |
 | *scale* | `float,float` | `0.1,10` | Scales the graph in x,y direction |
 | *origin* | `int,int` | `40,20` calculated by `(scaleX-1)/2,(scaleY-1)/2` | Sets the origin of the plot to the list index x,y |
@@ -43,7 +43,7 @@ py main.py sin(x) 0.2,_ 5,_ _,31
 The result plot contains the plotted graph of the function and in the first line all parameter values to reproduce it. Also, the entire plot is copied to the clipboard.
 
 ```
-f(x)=f(x)=sin(x) 0.2,10.0 5,14 81,31 0 0 0
+f(x)=sin(x) 0.2,10.0 5,14 81,31 0 0 0
 
      ▲                                                                           
      │                                                                           

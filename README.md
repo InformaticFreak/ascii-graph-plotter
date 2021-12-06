@@ -29,6 +29,17 @@ py main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int
 | *precision* | `bool` | `false` | Specifies if the graph should be plottet with thinner characters oriented at the angle at the point |
 | *ascii_only* | `bool` | `false` | Specifies whether the graph should be plotted with thinner characters, depending on the slope at each point |
 
+### Built-In Functions
+
+- `sin`, `cos`, `tan`, `cot`
+- `asin`, `acos`, `atan`, `acot`
+- `degrees`, `radian`
+- `log`, `sign`, `sqrt`
+
+### Constants
+
+- `e`, `pi`
+
 # Examples
 
 - Specifie the scale in x direction as 0.2 and use the default scale in y direction of 10, so write `0.2,_`

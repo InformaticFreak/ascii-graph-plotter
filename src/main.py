@@ -56,7 +56,7 @@ def draw(xy0, xy1, high_precision=True, ascii_only=False):
 
 #-----------------------------------------------------------------------------------------#
 
-# main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int] [discontinuous: bool] [precision: bool] [ascii_only: bool]
+# main.py [function: str] [scale: float,float] [origin: int,int] [size: int,int] [discontinuous: bool] [precision: bool] [ascii_only: bool] [less_volume: bool]
 
 # Feldgröße definieren, Nullpunkt position setzen & Präzission festlegen
 schemes = [r"\d+,\d+", r"_,\d+", r"_,_", r"\d+,_", r"(((\d+)?\.\d+)|(\d+\.?)),(((\d+)?\.\d+)|(\d+\.?))", r"_,(((\d+)?\.\d+)|(\d+\.?))", r"_,_", r"(((\d+)?\.\d+)|(\d+\.?)),_", r"1|(T|t)rue", r"_|0|(F|f)alse"]
@@ -115,6 +115,14 @@ try:
 	elif re.search(schemes[9], sys.argv[7]): ascii_only = ascii_only_default
 except: ascii_only = ascii_only_default
 
+# Verringertes Zeichenvolumen
+less_volume_default = False
+less_volume = less_volume_default
+try:
+	if re.search(schemes[8], sys.argv[7]): less_volume = True
+	elif re.search(schemes[9], sys.argv[7]): less_volume = less_volume_default
+except: less_volume = less_volume_default
+
 #-----------------------------------------------------------------------------------------#
 
 # Feld initialisieren
@@ -151,8 +159,15 @@ if not discontinuous:
 # Funktion mit Anstieg in Feld markieren
 for i, c in enumerate(xy[:-1]): grid[c[1]][c[0]] = draw(c, xy[i+1], precise, ascii_only)
 
+# Zeichenvolumen verringern
+last_index = 0
+if less_volume:
+	for y in grid:
+		for i, x in enumerate(y):
+			if x != None: last_index = i
+
 # Feld in string konvertieren
-output = [f"\nf(x)={sys.argv[1][5:] if sys.argv[1].startswith('f(x)=') else sys.argv[1]} {scale[0]},{scale[1]} {origin[0]},{origin[1]} {size[0]},{size[1]} {'1' if discontinuous else '0'} {'1' if precise else '0'} {'1' if ascii_only else '0'}\n\n"]
+output = [f"\nf(x)={sys.argv[1][5:] if sys.argv[1].startswith('f(x)=') else sys.argv[1]} {scale[0]},{scale[1]} {origin[0]},{origin[1]} {size[0]},{size[1]} {'1' if discontinuous else '0'} {'1' if precise else '0'} {'1' if ascii_only else '0'} {'1' if less_volume else '0'}\n\n"]
 for y in grid:
 	for x in y:
 		if x == None: output.append(" ")
